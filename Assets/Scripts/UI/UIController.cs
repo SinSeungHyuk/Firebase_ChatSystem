@@ -40,6 +40,8 @@ public class UIController : MonoBehaviour
 
     public void SendChatMessage()
     {
+        btnSignIn.gameObject.SetActive(false);
+
         string username = inpUsername.text;
         string message = inpMessage.text;
         firebaseController.SendChatMessage(username, message);

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "437138814555",
+    "firebase_url": "https://fir-chat-bca16-default-rtdb.firebaseio.com",
+    "project_id": "fir-chat-bca16",
+    "storage_bucket": "fir-chat-bca16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437138814555:android:03e7d315be6a224d26b17e",
+        "android_client_info": {
+          "package_name": "com.test.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR8VM-5TtDAN4ssFO7KJxPLW0NS1lmvUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

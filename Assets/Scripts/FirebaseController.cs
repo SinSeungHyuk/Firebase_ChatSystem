@@ -42,6 +42,31 @@ public class FirebaseController : MonoBehaviour
 
         DatabaseReference chatDB = FirebaseDatabase.DefaultInstance.GetReference("ChatMessage");
         chatDB.OrderByChild("timestamp").LimitToLast(1).ValueChanged += ReceiveMessage;
+
+        // Google 로그인에 필요한 토큰 값들
+        string googleIdToken = "YOUR_GOOGLE_ID_TOKEN";
+
+        // GoogleAuthProvider를 사용하여 Credential 생성
+        Credential credential = GoogleAuthProvider.GetCredential(googleIdToken, null);
+
+        // Credential을 사용하여 Google 계정으로 로그인 시도
+        auth.SignInWithCredentialAsync(credential).ContinueWithOnMainThread(task =>
+        {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInWithCredentialAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInWithCredentialAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            // 로그인 성공 시
+            FirebaseUser newUser = task.Result;
+            Debug.Log("Google 사용자 로그인 성공: " + newUser.DisplayName);
+        });
     }
 
     private void AuthStateChanged(object sender, EventArgs args)
